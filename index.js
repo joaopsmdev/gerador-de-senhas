@@ -40,6 +40,7 @@ function generatePassword(){
     tamanhoText.innerText = recebeValor
 
     calculateQuality()
+    calculateSize()
 }
 
 function calculateQuality(){
@@ -77,7 +78,25 @@ function copy(){
     navigator.clipboard.writeText(element.value)
 }
 
-
+function calculateSize(){
+    if(recebeValor > 45){
+        element.classList.remove("font-sm")
+        element.classList.remove("font-xs")
+        element.classList.add("font-xxs")
+    }else if(recebeValor > 32){
+        element.classList.remove("font-sm")
+        element.classList.remove("font-xxs")
+        element.classList.add("font-xs")
+    }else if(recebeValor > 22){
+        element.classList.remove("font-xs")
+        element.classList.remove("font-xxs")
+        element.classList.add("font-sm")
+    }else{
+        element.classList.remove("font-xs")
+        element.classList.remove("font-xxs")
+        element.classList.remove("font-sm")
+    }
+}
 const passwordLength = document.querySelector("#password-length")
 passwordLength.addEventListener("input", function(){
      recebeValor = passwordLength.value
